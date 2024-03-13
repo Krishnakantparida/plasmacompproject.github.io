@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Website</title>
+    <title>Simple Website with MD Content</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" defer></script>
 </head>
 <body>
     <header>
@@ -18,33 +21,26 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
-    <main>
-        <section>
-            <h2>About Us</h2>
-            <div id="aboutContent"></div>
-        </section>
-        <section>
-            <h2>Our Services</h2>
-            <ul>
-                <li>Service 1</li>
-                <li>Service 2</li>
-                <li>Service 3</li>
-            </ul>
-        </section>
+    <main id="main-content">
+        <!-- MD content will be inserted here -->
     </main>
     <footer>
         <p>&copy; 2024 Simple Website. All rights reserved.</p>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
     <script>
-        // Fetch the Markdown file and convert it to HTML
-        fetch('theory.md')
-            .then(response => response.text())
-            .then(mdContent => {
-                const converter = new showdown.Converter();
-                const htmlContent = converter.makeHtml(mdContent);
-                document.getElementById('aboutContent').innerHTML = htmlContent;
-            });
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("yourfile.md")
+                .then(response => response.text())
+                .then(data => {
+                    const converter = new showdown.Converter();
+                    const html = converter.makeHtml(data);
+                    document.getElementById("main-content").innerHTML = html;
+                    renderMathInElement(document.body);
+                });
+        });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js"></script>
 </body>
 </html>
+
