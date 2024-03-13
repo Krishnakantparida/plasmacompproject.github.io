@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[P464] Term Paper Page</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>P464 Plasma Physics and Magnetohydrodynamics</h1>
+        <h2>Krishna Kant Parida (1911087)</h2>
+        <h3>Instructor: Dr. Luke Robert Chamandy</h3>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://krishnakantparida.github.io/plasmacompproject.github.io/">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <footer>
+        <p>&copy; 2024 P464 Term Paper Page. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+    <script>
+        // Fetch the Markdown file and convert it to HTML
+        fetch('theory.md')
+            .then(response => response.text())
+            .then(mdContent => {
+                const converter = new showdown.Converter();
+                const htmlContent = converter.makeHtml(mdContent);
+                document.getElementById('aboutContent').innerHTML = htmlContent;
+            });
+    </script>
+</body>
+</html>
+
